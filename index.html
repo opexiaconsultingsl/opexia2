@@ -488,6 +488,18 @@
       .split{ grid-template-columns:1fr; }
       .beforeAfter{ grid-template-columns:1fr; }
     }
+
+    /* --- Mobile: más "zoom" visual (texto y componentes más grandes) --- */
+@media (max-width: 520px){
+  body{ font-size: 17px; }
+  h1{ font-size: 38px; line-height: 1.06; }
+  .lead{ font-size: 17px; }
+
+  .btn{ padding: 12px 16px; font-size: 15px; }
+  section{ padding: 56px 0; }
+  .pad{ padding: 20px; }
+  .pill{ font-size: 14px; padding: 11px 13px; }
+}
   </style>
 </head>
 
