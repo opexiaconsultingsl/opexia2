@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="OPEXIA CONSULTING — Mejora continua + automatización con resultados medibles. Lean, Agile, gestión, cuadros de mando y formación aplicada en toda España." />
+  <title>OPEXIA CONSULTING | Excelencia Operacional, Lean & Datos</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="OPEXIA CONSULTING" />
+  <meta property="og:description" content="Mejora continua + automatización con resultados medibles. Lean, Agile, gestión, cuadros de mando y formación aplicada." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0b0f17;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.55);
+      --line: rgba(255,255,255,.12);
+      --accent: #6ee7ff;
+      --accent2:#a78bfa;
+      --good:#34d399;
+      --warn:#fbbf24;
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 650px at 15% 8%, rgba(110,231,255,.22), transparent 60%),
+        radial-gradient(1100px 600px at 85% 15%, rgba(167,139,250,.20), transparent 55%),
+        radial-gradient(900px 520px at 50% 95%, rgba(52,211,153,.12), transparent 55%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 18px; }
+
+    /* Header */
+    .header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(11,15,23,.72);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+      padding:12px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800; letter-spacing:.4px;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(110,231,255,.85), transparent 60%),
+        radial-gradient(18px 18px at 70% 70%, rgba(167,139,250,.85), transparent 60%),
+        rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+    .brand small{ display:block; font-weight:600; color:var(--muted2); letter-spacing:.2px; }
+    .links{
+      display:flex; align-items:center; gap:18px;
+    }
+    .links a{
+      color:var(--muted);
+      font-weight:600;
+      font-size:14px;
+      padding:10px 10px;
+      border-radius:12px;
+      transition:.18s ease;
+    }
+    .links a:hover{ color:var(--text); background:rgba(255,255,255,.06); }
+    .cta{
+      display:flex; align-items:center; gap:10px;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      border-radius:14px;
+      padding:10px 14px;
+      font-weight:700;
+      font-size:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      transition:.18s ease;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); background:rgba(255,255,255,.10); }
+    .btn.primary{
+      border:1px solid rgba(110,231,255,.35);
+      background: linear-gradient(135deg, rgba(110,231,255,.22), rgba(167,139,250,.18));
+    }
+    .btn.primary:hover{
+      border-color: rgba(110,231,255,.55);
+      box-shadow: 0 18px 60px rgba(110,231,255,.08);
+    }
+
+    /* Mobile nav */
+    .burger{ display:none; }
+    .mobilePanel{
+      display:none;
+      border-top:1px solid var(--line);
+      padding:10px 0 14px;
+    }
+    .mobilePanel a{
+      display:block;
+      padding:12px 10px;
+      border-radius:14px;
+      color:var(--muted);
+      font-weight:700;
+    }
+    .mobilePanel a:hover{ background:rgba(255,255,255,.06); color:var(--text); }
+
+    /* Sections */
+    section{ padding:64px 0; }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .card{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .pad{ padding:22px; }
+
+    .kicker{
+      color:var(--muted2);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:12px;
+      font-weight:800;
+    }
+    h1{
+      margin:12px 0 12px;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+    .grad{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .lead{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.65;
+    }
+    .pillRow{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+    .pill{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      padding:10px 12px;
+      border-radius: 999px;
+      font-weight:700;
+      color:var(--muted);
+      font-size:13px;
+      display:inline-flex; gap:10px; align-items:center;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(110,231,255,.10);
+    }
+
+    .heroRight{
+      display:flex; flex-direction:column; gap:14px;
+      height:100%;
+    }
+    .mini{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+    .mini svg{ flex: 0 0 auto; }
+    .mini strong{ display:block; margin-bottom:6px; }
+    .mini p{ margin:0; color:var(--muted); line-height:1.55; font-size:14px; }
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    .stat{
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+    .stat .n{
+      font-size:26px; font-weight:900; letter-spacing:-.02em;
+    }
+    .stat .t{
+      margin-top:4px; color:var(--muted); font-weight:700; font-size:13px; line-height:1.35;
+    }
+
+    /* Section headers */
+    .sectionHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:18px;
+    }
+    .sectionHead h2{
+      margin:10px 0 0;
+      font-size:30px;
+      letter-spacing:-.02em;
+      line-height:1.15;
+    }
+    .sectionHead p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      max-width:60ch;
+    }
+
+    /* Services */
+    .cards3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .svc{
+      padding:18px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      transition: .18s ease;
+      min-height: 220px;
+    }
+    .svc:hover{ transform: translateY(-2px); background: rgba(255,255,255,.09); }
+    .svc h3{ margin:12px 0 8px; font-size:18px; letter-spacing:-.01em; }
+    .svc p{ margin:0; color:var(--muted); line-height:1.6; font-size:14px; }
+    .svc .tag{
+      display:inline-flex;
+      gap:8px; align-items:center;
+      font-weight:800;
+      font-size:12px;
+      color: rgba(255,255,255,.82);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      padding:8px 10px;
+      border-radius:999px;
+    }
+
+    /* Method */
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+    }
+    .step{
+      padding:16px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+    .step .num{
+      width:34px; height:34px;
+      border-radius: 12px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      margin-bottom:10px;
+    }
+    .step h4{ margin:0 0 8px; letter-spacing:-.01em; }
+    .step p{ margin:0; color:var(--muted); font-size:14px; line-height:1.6; }
+
+    /* Results / metrics */
+    .metrics{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+    }
+    .metric{
+      padding:16px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+    .metric .big{
+      font-size:28px; font-weight:900; letter-spacing:-.02em;
+    }
+    .metric .lbl{
+      margin-top:6px;
+      color:var(--muted);
+      font-weight:700;
+      font-size:13px;
+      line-height:1.35;
+    }
+
+    /* Sectors */
+    .sectors{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    .sector{
+      padding:14px 16px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--muted);
+      font-weight:800;
+      line-height:1.3;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+
+    /* Cases */
+    .cases{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .case{
+      padding:18px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+    .case h3{ margin:0 0 10px; letter-spacing:-.01em; }
+    .case ul{ margin:0; padding-left:18px; color:var(--muted); line-height:1.7; }
+    .case .chipRow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .chip{
+      font-size:12px;
+      font-weight:800;
+      color:rgba(255,255,255,.82);
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+    }
+    .beforeAfter{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .ba{
+      padding:14px 16px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+    .ba .h{
+      font-weight:900;
+      letter-spacing:-.01em;
+      margin-bottom:8px;
+      display:flex; gap:10px; align-items:center;
+    }
+    .ba .p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* FAQ */
+    .faq{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    details{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius2);
+      padding:14px 16px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:800;
+      color: rgba(255,255,255,.9);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{
+      margin:10px 0 0;
+      color: var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* Contact */
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    label{
+      display:block;
+      font-size:13px;
+      color: var(--muted);
+      font-weight:800;
+      margin-bottom:8px;
+    }
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      outline:none;
+      font-family:inherit;
+      font-size:14px;
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+    input:focus, textarea:focus{ border-color: rgba(110,231,255,.45); box-shadow: 0 0 0 5px rgba(110,231,255,.12); }
+
+    .foot{
+      padding:22px 0 36px;
+      color: var(--muted2);
+      border-top: 1px solid var(--line);
+      font-size:13px;
+    }
+    .footRow{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    /* Animations */
+    .reveal{ opacity:0; transform: translateY(10px); transition: .55s ease; }
+    .reveal.on{ opacity:1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .grid{ grid-template-columns:1fr; }
+      h1{ font-size:38px; }
+      .cards3{ grid-template-columns:1fr; }
+      .steps{ grid-template-columns:1fr 1fr; }
+      .metrics{ grid-template-columns:1fr 1fr; }
+      .sectors{ grid-template-columns:1fr 1fr; }
+      .cases{ grid-template-columns:1fr; }
+      .faq{ grid-template-columns:1fr; }
+      .contactGrid{ grid-template-columns:1fr; }
+      .links{ display:none; }
+      .burger{ display:inline-flex; }
+      .mobilePanel.show{ display:block; }
+    }
+    @media (max-width: 520px){
+      h1{ font-size:34px; }
+      .steps{ grid-template-columns:1fr; }
+      .metrics{ grid-template-columns:1fr; }
+      .sectors{ grid-template-columns:1fr; }
+      .split{ grid-template-columns:1fr; }
+      .beforeAfter{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="OPEXIA CONSULTING">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          OPEXIA <span class="grad">CONSULTING</span>
+          <small>Excelencia Operacional • Lean • Agile • Datos</small>
+        </div>
+      </a>
+
+      <nav class="links" aria-label="Navegación">
+        <a href="#servicios">Servicios</a>
+        <a href="#metodo">Método</a>
+        <a href="#sectores">Sectores</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#casos">Caso</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="cta">
+        <a class="btn" href="#contacto" title="Contactar">
+          <span aria-hidden="true">✉️</span> Hablemos
+        </a>
+        <button class="btn primary burger" id="burger" aria-expanded="false" aria-controls="mobilePanel">
+          ☰ Menú
+        </button>
+      </div>
+    </div>
+
+    <div class="mobilePanel" id="mobilePanel">
+      <a href="#servicios">Servicios</a>
+      <a href="#metodo">Método</a>
+      <a href="#sectores">Sectores</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#casos">Caso</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section>
+    <div class="wrap">
+      <div class="grid">
+        <div class="card">
+          <div class="pad">
+            <div class="kicker">Consultoría OPEXIA</div>
+            <h1>
+              Mejora continua + automatización con <span class="grad">resultados medibles</span>.
+            </h1>
+            <p class="lead">
+              Somos un <b>equipo</b> enfocado en transformar procesos (industria y oficina) combinando <b>Lean</b>, <b>Agile</b>, <b>gestión</b> y <b>datos</b>.
+              Menos fricción, más flujo y decisiones con KPIs; implantación práctica para que el cambio se sostenga.
+            </p>
+
+            <div class="pillRow">
+              <span class="pill"><span class="dot"></span> Lean Manufacturing</span>
+              <span class="pill"><span class="dot"></span> Agile & Gestión del cambio</span>
+              <span class="pill"><span class="dot"></span> Cuadros de mando (Excel/Power BI)</span>
+              <span class="pill"><span class="dot"></span> Liderazgo • Conflictos • Rutinas</span>
+              <span class="pill"><span class="dot"></span> Proyectos en toda España</span>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:18px; flex-wrap:wrap;">
+              <a class="btn primary" href="#servicios">
+                Ver servicios <span aria-hidden="true">→</span>
+              </a>
+              <a class="btn" href="#contacto">
+                Solicitar diagnóstico <span aria-hidden="true">📋</span>
+              </a>
+              <a class="btn" href="#casos">
+                Ver caso <span aria-hidden="true">🧩</span>
+              </a>
+            </div>
+
+            <div style="margin-top:16px; color:var(--muted2); font-size:13px; line-height:1.6;">
+              <b>Forma de trabajar:</b> quick wins + sistema de gestión (cadencias, estándares, métricas) para que no se pierda.
+            </div>
+          </div>
+        </div>
+
+        <div class="heroRight">
+          <div class="mini reveal">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V6l-8-3-8 3v6c0 6 8 10 8 10Z" stroke="rgba(110,231,255,.95)" stroke-width="2"/>
+              <path d="M8 12l2.5 2.5L16 9" stroke="rgba(52,211,153,.95)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Implantación real, no “teoría infinita”</strong>
+              <p>Diseñamos con el equipo y ejecutamos en el terreno: estándar, rutinas, gestión visual, formación y seguimiento.</p>
+            </div>
+          </div>
+
+          <div class="mini reveal">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 19V5m0 14h16M8 16l3-3 3 2 5-6" stroke="rgba(167,139,250,.95)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Datos que ayudan a decidir</strong>
+              <p>KPIs útiles (no decorativos), diccionario KPI, calidad del dato y cuadros de mando por rol.</p>
+            </div>
+          </div>
+
+          <div class="split">
+            <div class="stat reveal">
+              <div class="n"><span class="grad">6</span></div>
+              <div class="t">Servicios claros con entregables y métricas desde el día 1</div>
+            </div>
+            <div class="stat reveal">
+              <div class="n"><span class="grad">4</span></div>
+              <div class="t">Fases: Diagnóstico → Diseño → Implantación → Sostenibilidad</div>
+            </div>
+          </div>
+
+          <div class="mini reveal">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2v4m0 12v4M4 12H2m20 0h-2M19.07 4.93l-2.83 2.83M7.76 16.24l-2.83 2.83M19.07 19.07l-2.83-2.83M7.76 7.76 4.93 4.93"
+                    stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"
+                    stroke="rgba(110,231,255,.95)" stroke-width="2"/>
+            </svg>
+            <div>
+              <strong>Cambio que se sostiene</strong>
+              <p>Gestión del cambio, liderazgo y resolución de conflictos para alinear a las personas con el sistema.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">Qué hacemos</div>
+          <h2>Servicios orientados a <span class="grad">eficiencia</span> y <span class="grad">control</span></h2>
+        </div>
+        <p>
+          Proyectos cerrados (objetivo + entregables) o acompañamiento mensual.
+          Siempre con baseline, KPIs y plan de acción.
+        </p>
+      </div>
+
+      <div class="cards3">
+        <div class="svc reveal">
+          <span class="tag">⚙️ Lean</span>
+          <h3>Consultoría Lean Manufacturing</h3>
+          <p>VSM, 5S, SMED, estandarización, gestión visual, gemba, resolución de problemas y rutinas de gestión diaria.</p>
+        </div>
+
+        <div class="svc reveal">
+          <span class="tag">🏃 Agile</span>
+          <h3>Agile aplicado a operaciones</h3>
+          <p>Priorización, flujo, cadencias, tableros, backlog operativo, y despliegue de iniciativas con foco en valor.</p>
+        </div>
+
+        <div class="svc reveal">
+          <span class="tag">🧭 Gestión</span>
+          <h3>Gestión empresarial</h3>
+          <p>Modelos de gestión, objetivos, seguimiento, gobernanza mínima, y alineamiento transversal para ejecutar estrategia.</p>
+        </div>
+
+        <div class="svc reveal">
+          <span class="tag">📊 KPIs</span>
+          <h3>Cuadros de mando</h3>
+          <p>Definición de métricas, limpieza de datos y dashboards en Excel/Power BI con enfoque por rol (dirección, mando, operación).</p>
+        </div>
+
+        <div class="svc reveal">
+          <span class="tag">🎓 Formación</span>
+          <h3>Formaciones adaptadas</h3>
+          <p>Excel, Power BI, gestión del cambio, liderazgo, resolución de conflictos y herramientas de mejora continua con casos reales.</p>
+        </div>
+
+        <div class="svc reveal">
+          <span class="tag">🔁 Sostenibilidad</span>
+          <h3>Gestión del cambio & sostenibilidad</h3>
+          <p>Adopción, comunicación, roles, rutinas, auditorías ligeras y acompañamiento para que el sistema no se degrade.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="#contacto">Pedir propuesta</a>
+        <a class="btn" href="#metodo">Ver método</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section id="metodo">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">Cómo trabajamos</div>
+          <h2>Un método simple: <span class="grad">diagnosticar</span>, ejecutar, y <span class="grad">sostener</span></h2>
+        </div>
+        <p>
+          Sin humo: cada fase genera entregables y se valida con métricas.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">1</div>
+          <h4>Diagnóstico</h4>
+          <p>Baseline, mapa de proceso, pérdidas, tiempos, datos disponibles y principales palancas (quick wins + estructurales).</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">2</div>
+          <h4>Diseño</h4>
+          <p>To-Be, estándares, KPIs, tablero, plan de implantación y gestión del cambio (comunicación/roles/cadencias).</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">3</div>
+          <h4>Implantación</h4>
+          <p>Talleres, pilotos, ajustes en campo y escalado. Agile para priorizar y mantener foco en valor.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">4</div>
+          <h4>Sostenibilidad</h4>
+          <p>Gestión diaria, revisiones, auditorías ligeras, formación y transferencia de conocimiento para autonomía del equipo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORES -->
+  <section id="sectores">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">Dónde aportamos</div>
+          <h2>Sectores objetivo</h2>
+        </div>
+        <p>
+          Trabajamos en <b>toda España</b>. Si tu sector no está aquí, probablemente también: lo importante es el proceso, los datos y la ejecución.
+        </p>
+      </div>
+
+      <div class="sectors">
+        <div class="sector reveal"><span aria-hidden="true">🏭</span> Industria (fabricación)</div>
+        <div class="sector reveal"><span aria-hidden="true">📦</span> Logística & supply chain</div>
+        <div class="sector reveal"><span aria-hidden="true">🍽️</span> Alimentación & procesos</div>
+        <div class="sector reveal"><span aria-hidden="true">🧾</span> Servicios & backoffice</div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <div class="pad">
+          <div class="kicker">Ámbito</div>
+          <div style="display:grid; grid-template-columns: 1.2fr .8fr; gap:14px; align-items:center;">
+            <div>
+              <h3 style="margin:10px 0 8px; letter-spacing:-.01em;">España entera • Presencial / remoto / híbrido</h3>
+              <p class="lead" style="font-size:14px;">
+                Diagnóstico e implantación clave mejor presencial. Analítica, dashboards y preparación de datos se trabaja muy bien en remoto.
+              </p>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+              <a class="btn primary" href="#contacto">Contactar</a>
+              <a class="btn" href="#resultados">Ver resultados</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESULTADOS -->
+  <section id="resultados">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">Impacto</div>
+          <h2>Resultados típicos (según punto de partida)</h2>
+        </div>
+        <p>
+          Objetivos fijados con baseline y revisados en cadencia. Rangos habituales cuando hay disciplina de implantación.
+        </p>
+      </div>
+
+      <div class="metrics">
+        <div class="metric reveal">
+          <div class="big"><span class="grad">-15% a -35%</span></div>
+          <div class="lbl">Tiempo de ciclo / lead time en procesos clave</div>
+        </div>
+        <div class="metric reveal">
+          <div class="big"><span class="grad">+10% a +25%</span></div>
+          <div class="lbl">Productividad (output por hora / FTE)</div>
+        </div>
+        <div class="metric reveal">
+          <div class="big"><span class="grad">-20% a -60%</span></div>
+          <div class="lbl">Trabajo manual repetitivo (reporting / consolidaciones)</div>
+        </div>
+        <div class="metric reveal">
+          <div class="big"><span class="grad">+30% a +80%</span></div>
+          <div class="lbl">Visibilidad y control con KPIs y gestión visual</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <div class="pad">
+          <div class="kicker">Entregables</div>
+          <div style="display:grid; grid-template-columns: 1.2fr .8fr; gap:14px; align-items:center;">
+            <div>
+              <h3 style="margin:10px 0 8px; letter-spacing:-.01em;">Qué te llevas en un proyecto OPEXIA</h3>
+              <p class="lead" style="font-size:14px;">
+                Baseline + objetivo, mapa As-Is/To-Be, plan de acciones, tablero KPI, estándares (SOP), rutinas de seguimiento y formación aplicada.
+              </p>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+              <a class="btn primary" href="#contacto">Quiero un diagnóstico</a>
+              <a class="btn" href="#casos">Ver caso</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CASO (mini antes/después) -->
+  <section id="casos">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">Mini caso</div>
+          <h2>Antes / Después (ejemplo típico)</h2>
+        </div>
+        <p>
+          Ejemplo representativo de un proyecto de mejora + datos (sin detalles sensibles). En tu propuesta lo aterrizamos con tu baseline real.
+        </p>
+      </div>
+
+      <div class="cases">
+        <div class="case reveal">
+          <h3>🧾 Proceso administrativo (reporting mensual)</h3>
+          <ul>
+            <li>Mucho tiempo en consolidar ficheros y validar datos</li>
+            <li>Indicadores inconsistentes por falta de diccionario KPI</li>
+            <li>Dependencia de 1 persona “que sabe cómo se hace”</li>
+          </ul>
+
+          <div class="beforeAfter">
+            <div class="ba">
+              <div class="h">⛔ Antes</div>
+              <p class="p">
+                Cierre lento y reactivo. Retrabajo por errores de copia/pega. Sin visibilidad diaria y con discusiones por “qué KPI es el bueno”.
+              </p>
+            </div>
+            <div class="ba">
+              <div class="h">✅ Después</div>
+              <p class="p">
+                Modelo de datos + Power Query, diccionario KPI, tablero por rol y cadencia semanal.
+                Reducción del trabajo manual <b>20–60%</b> y mejora de visibilidad <b>30–80%</b>.
+              </p>
+            </div>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip">KPIs</span>
+            <span class="chip">Power Query</span>
+            <span class="chip">Gestión diaria</span>
+            <span class="chip">Sostenibilidad</span>
+          </div>
+        </div>
+
+        <div class="case reveal">
+          <h3>🎯 Qué hacemos para conseguirlo</h3>
+          <ul>
+            <li>Baseline + objetivo claro (tiempo, calidad, coste, servicio)</li>
+            <li>Estandarización + roles + rutinas de seguimiento</li>
+            <li>Tablero KPI con definición y fuentes</li>
+            <li>Gestión del cambio: comunicación, formación y adopción</li>
+          </ul>
+          <div class="chipRow">
+            <span class="chip">Lean</span>
+            <span class="chip">Agile</span>
+            <span class="chip">Gestión del cambio</span>
+            <span class="chip">Formación aplicada</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">Dudas típicas</div>
+          <h2>FAQ</h2>
+        </div>
+        <p>Si quieres, preparamos una propuesta en 1 página con alcance, hitos y métricas objetivo.</p>
+      </div>
+
+      <div class="faq">
+        <details class="reveal">
+          <summary>¿Trabajáis por horas o por proyecto?</summary>
+          <p>Preferentemente por <b>proyecto con objetivos</b> (alcance + entregables + KPIs). También ofrecemos acompañamiento mensual para sostener la mejora.</p>
+        </details>
+
+        <details class="reveal">
+          <summary>¿Cómo garantizáis que el cambio se mantenga?</summary>
+          <p>Con <b>estándar + rutinas + formación + seguimiento</b>. Si no existe cadencia y roles claros, el sistema se degrada: por eso cerramos el proyecto con sostenibilidad.</p>
+        </details>
+
+        <details class="reveal">
+          <summary>¿Excel o Power BI?</summary>
+          <p>Depende del contexto. Con Excel se puede ir muy lejos si hay modelo y calidad de datos. Power BI suma para distribución, permisos, escalabilidad y consumo por rol.</p>
+        </details>
+
+        <details class="reveal">
+          <summary>¿Qué necesitáis del equipo?</summary>
+          <p>Un sponsor, acceso a proceso/datos y 2–5 personas clave para talleres. La mejora no es “outsourcing”: nosotros aceleramos y estructuramos, el equipo lo hace suyo.</p>
+        </details>
+
+        <details class="reveal">
+          <summary>¿En cuánto tiempo se ven resultados?</summary>
+          <p>Quick wins en semanas si hay foco. Cambios estructurales (modelo de gestión) suelen requerir 8–16 semanas para estabilizarse.</p>
+        </details>
+
+        <details class="reveal">
+          <summary>¿Trabajáis en toda España?</summary>
+          <p>Sí. Presencial, remoto o híbrido. Ajustamos la modalidad al tipo de trabajo (gemba vs analítica/dashboards).</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">Contacto</div>
+          <h2>Cuéntanos tu reto y te proponemos un plan</h2>
+        </div>
+        <p>
+          Objetivo, proceso, datos disponibles y plazo. Te devolvemos un enfoque con métricas y entregables.
+        </p>
+      </div>
+
+      <div class="contactGrid">
+        <div class="card reveal">
+          <div class="pad">
+            <h3 style="margin:0 0 10px; letter-spacing:-.01em;">Escríbenos</h3>
+            <p class="lead" style="font-size:14px; margin-bottom:14px;">
+              Completa el formulario y se abrirá tu correo con el mensaje preparado (sin backend).
+            </p>
+
+            <form id="contactForm">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                <div>
+                  <label for="name">Nombre</label>
+                  <input id="name" name="name" placeholder="Tu nombre" required>
+                </div>
+                <div>
+                  <label for="company">Empresa</label>
+                  <input id="company" name="company" placeholder="Empresa / área">
+                </div>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="tu@email.com" required>
+                </div>
+                <div>
+                  <label for="phone">Teléfono (opcional)</label>
+                  <input id="phone" name="phone" placeholder="+34 ...">
+                </div>
+              </div>
+
+              <div style="margin-top:12px;">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" placeholder="Objetivo, proceso, problema, datos, plazo..." required></textarea>
+              </div>
+
+              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+                <button type="submit" class="btn primary">Enviar</button>
+                <button type="button" class="btn" id="copyBtn">Copiar mensaje</button>
+              </div>
+
+              <div id="formHint" style="margin-top:10px; color:var(--muted2); font-size:13px; line-height:1.6;"></div>
+            </form>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="pad">
+            <h3 style="margin:0 0 10px; letter-spacing:-.01em;">Datos directos</h3>
+            <p class="lead" style="font-size:14px; margin-bottom:14px;">
+              Preferimos una primera toma de contacto breve (20–30 min) para definir objetivo y alcance.
+            </p>
+
+            <div class="mini" style="box-shadow:none;">
+              <div aria-hidden="true">✉️</div>
+              <div>
+                <strong>Email</strong>
+                <p><a href="mailto:info@opexiaconsulting.com">info@opexiaconsulting.com</a></p>
+              </div>
+            </div>
+
+            <div class="mini" style="margin-top:10px; box-shadow:none;">
+              <div aria-hidden="true">📞</div>
+              <div>
+                <strong>Teléfono</strong>
+                <p><a href="tel:+34697540295">+34 697 540 295</a></p>
+              </div>
+            </div>
+
+            <div class="mini" style="margin-top:10px; box-shadow:none;">
+              <div aria-hidden="true">🗺️</div>
+              <div>
+                <strong>Ámbito</strong>
+                <p>España entera (presencial / remoto / híbrido)</p>
+              </div>
+            </div>
+
+            <div style="margin-top:14px; padding:14px; border-radius: var(--radius2); border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.06);">
+              <div class="kicker">Para ir al grano</div>
+              <p class="lead" style="font-size:14px; margin-top:10px;">
+                Si quieres una propuesta rápida: <b>1 proceso</b>, <b>1 KPI</b>, <b>1 palanca</b> (Lean/Agile/datos). Lo escalamos después.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap foot">
+    <div class="footRow">
+      <div>© <span id="year"></span> OPEXIA CONSULTING. Todos los derechos reservados.</div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn" href="#top">↑ Arriba</a>
+        <a class="btn" href="#contacto">Contactar</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  // --- Config: datos de contacto ---
+  const CONFIG = {
+    emailTo: "info@opexiaconsulting.com",
+    emailSubject: "Consulta — OPEXIA CONSULTING"
+  };
+
+  // Year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Mobile nav
+  const burger = document.getElementById("burger");
+  const mobilePanel = document.getElementById("mobilePanel");
+  if (burger) {
+    burger.addEventListener("click", () => {
+      const open = mobilePanel.classList.toggle("show");
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    // Close on click
+    mobilePanel.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        mobilePanel.classList.remove("show");
+        burger.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add("on");
+    });
+  }, { threshold: 0.10 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // Contact form -> mailto
+  const form = document.getElementById("contactForm");
+  const hint = document.getElementById("formHint");
+  const copyBtn = document.getElementById("copyBtn");
+
+  function buildMessage() {
+    const name = document.getElementById("name").value.trim();
+    const company = document.getElementById("company").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    const lines = [
+      `Nombre: ${name}`,
+      `Empresa/Área: ${company || "-"}`,
+      `Email: ${email}`,
+      `Teléfono: ${phone || "-"}`,
+      ``,
+      `Mensaje:`,
+      message
+    ];
+    return lines.join("\n");
+  }
+
+  function validateBasic() {
+    const email = document.getElementById("email").value.trim();
+    return email.includes("@");
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const msg = buildMessage();
+    if (!validateBasic()) {
+      hint.textContent = "Revisa el email antes de enviar.";
+      return;
+    }
+    const mailto = `mailto:${encodeURIComponent(CONFIG.emailTo)}?subject=${encodeURIComponent(CONFIG.emailSubject)}&body=${encodeURIComponent(msg)}`;
+    window.location.href = mailto;
+    hint.textContent = "Si no se abre tu cliente de correo, usa “Copiar mensaje” y pégalo en tu email.";
+  });
+
+  copyBtn.addEventListener("click", async () => {
+    try{
+      const msg = buildMessage();
+      await navigator.clipboard.writeText(msg);
+      hint.textContent = "Mensaje copiado al portapapeles ✅";
+    }catch(err){
+      hint.textContent = "No se pudo copiar automáticamente. Selecciona el texto del mensaje y cópialo manualmente.";
+    }
+  });
+</script>
+
+<!-- SEO: JSON-LD básico (ajusta con datos reales si quieres) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "OPEXIA CONSULTING",
+  "description": "Mejora continua + automatización con resultados medibles. Lean, Agile, gestión empresarial, cuadros de mando y formación aplicada.",
+  "areaServed": "ES",
+  "email": "info@opexiaconsulting.com"
+}
+</script>
+
+</body>
+</html>
