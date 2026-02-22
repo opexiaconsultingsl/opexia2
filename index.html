@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <meta name="description" content="OPEXIA CONSULTING — Mejora continua + automatización con resultados medibles. Lean, Agile, gestión, cuadros de mando y formación aplicada en toda España." />
   <title>OPEXIA CONSULTING</title>
 
@@ -481,11 +481,55 @@
       .foot-row .btn { flex: 1; justify-content: center; }
     }
 
-    /* Very small: ≤ 360px */
-    @media (max-width: 360px) {
-      .sectors-grid  { grid-template-columns: 1fr; }
-      .metrics-grid  { grid-template-columns: 1fr; }
-      .stat-row      { grid-template-columns: 1fr; }
+    /* ─── FORZAR MÓVIL EN CHROME iOS (archivo local) ─────────────────
+       Chrome en iOS a veces no activa los media queries correctamente
+       cuando se abre un archivo local. Este bloque fuerza el layout. */
+    @supports (-webkit-touch-callout: none) {
+      /* Solo aplica en dispositivos iOS */
+      .nav-links { display: none !important; }
+      .burger    { display: block !important; }
+      .nav-cta   { display: none !important; }
+
+      .hero-grid,
+      .cases-grid,
+      .contact-grid { grid-template-columns: 1fr !important; }
+
+      .services-grid,
+      .steps-grid   { grid-template-columns: 1fr 1fr !important; }
+
+      .metrics-grid,
+      .sectors-grid,
+      .stat-row     { grid-template-columns: 1fr 1fr !important; }
+
+      .faq-grid     { grid-template-columns: 1fr !important; }
+      .ba-grid      { grid-template-columns: 1fr !important; }
+
+      .hero-ctas    { flex-direction: column !important; }
+      .hero-ctas .btn { width: 100% !important; justify-content: center !important; }
+
+      .scope-card   { flex-direction: column !important; }
+
+      .form-row     { grid-template-columns: 1fr !important; }
+      .form-actions { flex-direction: column !important; }
+      .form-actions .btn { width: 100% !important; justify-content: center !important; }
+
+      h1 { font-size: 28px !important; }
+      h2 { font-size: 22px !important; }
+      .stat-n { font-size: 34px !important; }
+      .metric-big { font-size: 17px !important; }
+
+      section { padding: 36px 0 !important; }
+      .brand-sub { display: none !important; }
+    }
+
+    /* Para pantallas iOS pequeñas (≤ 430px) */
+    @supports (-webkit-touch-callout: none) {
+      @media (max-width: 430px) {
+        .services-grid,
+        .steps-grid { grid-template-columns: 1fr !important; }
+        .sectors-grid,
+        .metrics-grid { grid-template-columns: 1fr 1fr !important; }
+      }
     }
   </style>
 </head>
@@ -894,7 +938,7 @@
               <div class="info-icon">✉️</div>
               <div>
                 <div class="info-label">Email</div>
-                <div class="info-val"><a href="mailto:info@opexiaconsulting.com">info@opexiaconsulting.com</a></div>
+                <div class="info-val"><a href="/cdn-cgi/l/email-protection#224b4c444d624d52475a4b43414d4c51574e564b4c450c414d4f"><span class="__cf_email__" data-cfemail="91f8fff7fed1fee1f4e9f8f0f2feffe2e4fde5f8fff6bff2fefc">[email&#160;protected]</span></a></div>
               </div>
             </div>
             <div class="info-row">
@@ -937,7 +981,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1014,12 +1058,4 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "OPEXIA CONSULTING",
-  "description": "Mejora continua + automatización con resultados medibles. Lean, Agile, gestión, cuadros de mando y formación aplicada.",
-  "areaServed": "ES",
-  "email": "info@opexiaconsulting.com"
-}
-</script>
-
-</body>
-</html>
+  "name"
