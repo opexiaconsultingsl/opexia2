@@ -12,10 +12,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Syne:wght@700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ─── Tokens ───────────────────────────────────────────────────────── */
+    /* ─── Tokens ─────────────────────────────────────────────────────── */
     :root {
       --bg: #07090f;
       --surface: rgba(255,255,255,.05);
@@ -24,20 +24,20 @@
       --text: #f0f2f8;
       --muted: rgba(240,242,248,.62);
       --muted2: rgba(240,242,248,.40);
-      --accent: #5bdfb8;     /* teal-mint */
-      --accent2: #7b9eff;    /* periwinkle */
-      --warn: #ffc96b;
+      --accent: #5bdfb8;
+      --accent2: #7b9eff;
       --radius: 16px;
       --radius-lg: 24px;
       --max: 1100px;
-      --pad: clamp(16px, 4vw, 28px);
+      --pad: clamp(16px, 5vw, 28px);
     }
 
-    /* ─── Reset ────────────────────────────────────────────────────────── */
+    /* ─── Reset ──────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 16px;
       color: var(--text);
       background: var(--bg);
       background-image:
@@ -48,18 +48,18 @@
       -webkit-font-smoothing: antialiased;
     }
     a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
 
-    /* ─── Layout ───────────────────────────────────────────────────────── */
+    /* ─── Layout ─────────────────────────────────────────────────────── */
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
-    section { padding: clamp(48px, 8vw, 80px) 0; }
+    section { padding: clamp(40px, 8vw, 80px) 0; }
 
-    /* ─── Typography ───────────────────────────────────────────────────── */
-    h1, h2, h3 { font-family: 'Syne', sans-serif; line-height: 1.1; letter-spacing: -.02em; }
-    h1 { font-size: clamp(32px, 6vw, 54px); }
-    h2 { font-size: clamp(24px, 4vw, 36px); }
-    h3 { font-size: clamp(17px, 2.5vw, 22px); font-weight: 700; }
-    p { line-height: 1.7; }
+    /* ─── Typography ─────────────────────────────────────────────────── */
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.1; letter-spacing: -.02em; }
+    h1 { font-size: clamp(28px, 7vw, 54px); }
+    h2 { font-size: clamp(22px, 5vw, 36px); }
+    h3 { font-size: clamp(16px, 3vw, 22px); font-weight: 700; }
+    h4 { font-size: clamp(15px, 2.5vw, 17px); }
+    p  { line-height: 1.7; }
 
     .grad {
       background: linear-gradient(125deg, var(--accent), var(--accent2));
@@ -68,22 +68,19 @@
       color: transparent;
     }
     .kicker {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 8px;
+      display: block;
     }
 
-    /* ─── Buttons ──────────────────────────────────────────────────────── */
+    /* ─── Buttons ────────────────────────────────────────────────────── */
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 11px 18px;
+      padding: 12px 20px;
       border-radius: 12px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 15px; font-weight: 600;
       border: 1px solid var(--border);
       background: var(--surface);
       color: var(--text);
@@ -91,28 +88,31 @@
       transition: background .18s, border-color .18s, transform .18s;
       white-space: nowrap;
       user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
-    .btn:hover { background: var(--surface2); transform: translateY(-1px); }
+    .btn:hover  { background: var(--surface2); transform: translateY(-1px); }
+    .btn:active { transform: scale(.97); }
     .btn.primary {
       background: linear-gradient(135deg, rgba(91,223,184,.18), rgba(123,158,255,.14));
       border-color: rgba(91,223,184,.30);
     }
     .btn.primary:hover { border-color: rgba(91,223,184,.55); }
+    .btn.full { width: 100%; justify-content: center; }
 
-    /* ─── Nav ──────────────────────────────────────────────────────────── */
+    /* ─── Header / Nav ───────────────────────────────────────────────── */
     .header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(7,9,15,.80);
-      backdrop-filter: blur(14px) saturate(1.4);
+      background: rgba(7,9,15,.88);
+      backdrop-filter: blur(16px) saturate(1.4);
       border-bottom: 1px solid var(--border);
     }
     .nav {
       display: flex; align-items: center; justify-content: space-between;
-      gap: 12px; padding: 14px 0;
+      gap: 12px; padding: 13px 0;
     }
     .brand {
-      display: flex; align-items: center; gap: 12px;
-      font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800;
+      display: flex; align-items: center; gap: 11px;
+      font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800;
       flex-shrink: 0;
     }
     .logo-mark {
@@ -121,45 +121,61 @@
       display: flex; align-items: center; justify-content: center;
     }
     .logo-mark svg { width: 18px; height: 18px; }
-    .brand-sub { font-size: 11px; font-weight: 500; color: var(--muted2); font-family: 'DM Sans', sans-serif; display: block; margin-top: 1px; }
-
-    .nav-links {
-      display: flex; align-items: center; gap: 4px;
-      list-style: none;
+    .brand-sub {
+      font-size: 10px; font-weight: 500; color: var(--muted2);
+      font-family: 'DM Sans', sans-serif; display: block; margin-top: 2px;
     }
+
+    /* Desktop nav links */
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
     .nav-links a {
       font-size: 14px; font-weight: 500; color: var(--muted);
-      padding: 8px 12px; border-radius: 10px;
+      padding: 8px 11px; border-radius: 10px;
       transition: color .15s, background .15s;
     }
     .nav-links a:hover { color: var(--text); background: var(--surface); }
 
-    /* Burger */
+    /* Burger button */
     .burger {
       display: none;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 8px 12px;
+      padding: 9px 13px;
       cursor: pointer;
       color: var(--text);
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1;
+      -webkit-tap-highlight-color: transparent;
+      transition: background .15s;
     }
-    .mobile-menu {
-      display: none;
-      border-top: 1px solid var(--border);
-      padding: 12px 0;
-    }
-    .mobile-menu.open { display: block; }
-    .mobile-menu a {
-      display: block; padding: 12px 8px;
-      font-size: 15px; font-weight: 600; color: var(--muted);
-      border-radius: 10px; transition: background .15s, color .15s;
-    }
-    .mobile-menu a:hover { background: var(--surface); color: var(--text); }
+    .burger:active { background: var(--surface2); }
 
-    /* ─── Hero ─────────────────────────────────────────────────────────── */
+    /* Mobile menu — hidden by default */
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+      border-top: 0px solid var(--border);
+    }
+    .mobile-menu.open {
+      max-height: 500px;
+      border-top: 1px solid var(--border);
+    }
+    .mobile-menu-inner { padding: 8px 0 14px; }
+    .mobile-menu a {
+      display: flex; align-items: center;
+      padding: 13px 10px;
+      font-size: 16px; font-weight: 600; color: var(--muted);
+      border-radius: 12px;
+      transition: background .15s, color .15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mobile-menu a:hover,
+    .mobile-menu a:active { background: var(--surface); color: var(--text); }
+    .mobile-cta { padding: 8px 0 4px; display: flex; gap: 10px; }
+
+    /* ─── Hero ───────────────────────────────────────────────────────── */
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -173,235 +189,185 @@
       padding: clamp(20px, 4vw, 32px);
     }
     .hero-lead {
-      margin: 12px 0 16px;
+      margin: 14px 0 18px;
       color: var(--muted);
-      font-size: clamp(15px, 2vw, 16px);
+      font-size: clamp(15px, 2.2vw, 17px);
     }
     .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
     .pill {
       display: inline-flex; align-items: center; gap: 7px;
       font-size: 13px; font-weight: 500; color: var(--muted);
-      border: 1px solid var(--border);
-      background: var(--surface);
-      padding: 7px 12px; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--surface);
+      padding: 7px 13px; border-radius: 999px;
     }
     .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
 
     .hero-right { display: flex; flex-direction: column; gap: 14px; }
     .mini-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px;
       display: flex; gap: 14px; align-items: flex-start;
     }
     .mini-icon {
-      width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
+      font-size: 18px; background: var(--surface2); border: 1px solid var(--border);
     }
     .mini-card strong { display: block; font-size: 15px; margin-bottom: 5px; }
     .mini-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
     .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .stat-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px;
       text-align: center;
     }
-    .stat-n { font-family: 'DM Sans', sans-serif; font-size: 38px; font-weight: 800; line-height: 1; letter-spacing: -.02em; }
-    .stat-t { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
-
-    /* ─── Section Head ─────────────────────────────────────────────────── */
-    .section-head {
-      margin-bottom: 28px;
+    .stat-n {
+      font-family: 'DM Sans', sans-serif; font-size: 40px;
+      font-weight: 800; line-height: 1; letter-spacing: -.03em;
     }
+    .stat-t { font-size: 12px; color: var(--muted); margin-top: 7px; line-height: 1.4; }
+
+    /* ─── Section Head ───────────────────────────────────────────────── */
+    .section-head { margin-bottom: 28px; }
     .section-head h2 { margin-bottom: 10px; }
     .section-head .desc { color: var(--muted); max-width: 60ch; font-size: 15px; }
 
-    /* ─── Services ─────────────────────────────────────────────────────── */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
+    /* ─── Services ───────────────────────────────────────────────────── */
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
     .svc-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: clamp(16px, 3vw, 22px);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: clamp(16px,3vw,22px);
       transition: background .18s, transform .18s;
     }
     .svc-card:hover { background: var(--surface2); transform: translateY(-2px); }
     .svc-tag {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 12px; font-weight: 700;
-      border: 1px solid var(--border);
-      background: var(--surface2);
-      padding: 6px 10px; border-radius: 999px;
-      color: var(--muted);
+      border: 1px solid var(--border); background: var(--surface2);
+      padding: 6px 11px; border-radius: 999px; color: var(--muted);
       margin-bottom: 12px;
     }
     .svc-card h3 { margin-bottom: 8px; font-size: 17px; }
-    .svc-card p { font-size: 14px; color: var(--muted); }
+    .svc-card p  { font-size: 14px; color: var(--muted); }
 
-    /* ─── Steps ────────────────────────────────────────────────────────── */
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
+    /* ─── Steps ──────────────────────────────────────────────────────── */
+    .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
     .step {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: clamp(14px, 2.5vw, 20px);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: clamp(16px,2.5vw,22px);
       text-align: center;
     }
     .step-num {
       width: 44px; height: 44px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Sans', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -.02em;
+      font-family: 'DM Sans', sans-serif; font-size: 20px;
+      font-weight: 800; letter-spacing: -.02em;
       background: var(--surface2); border: 1px solid var(--border);
-      margin: 0 auto 12px;
+      margin: 0 auto 14px;
     }
-    .step h4 { font-family: 'Syne', sans-serif; font-size: 16px; margin-bottom: 8px; }
-    .step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .step h4 { font-size: 16px; margin-bottom: 8px; }
+    .step p  { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-    /* ─── Sectors ──────────────────────────────────────────────────────── */
+    /* ─── Sectors ────────────────────────────────────────────────────── */
     .sectors-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 16px;
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 12px; margin-bottom: 16px;
     }
     .sector {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 16px;
       display: flex; align-items: center; gap: 10px;
       font-size: 14px; font-weight: 600; color: var(--muted);
     }
-    .sector-icon { font-size: 22px; flex-shrink: 0; }
+    .sector-icon { font-size: 24px; flex-shrink: 0; }
 
     .scope-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: clamp(16px, 3vw, 24px);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: clamp(16px,3vw,24px);
       display: flex; align-items: center; justify-content: space-between;
       gap: 16px; flex-wrap: wrap;
     }
     .scope-card h3 { margin-bottom: 6px; }
-    .scope-card p { color: var(--muted); font-size: 14px; }
+    .scope-card p  { color: var(--muted); font-size: 14px; }
 
-    /* ─── Metrics ──────────────────────────────────────────────────────── */
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
+    /* ─── Metrics ────────────────────────────────────────────────────── */
+    .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
     .metric {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: clamp(14px, 3vw, 20px);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: clamp(16px,3vw,22px);
     }
     .metric-big {
       font-family: 'DM Sans', sans-serif;
-      font-size: clamp(18px, 2.5vw, 24px);
+      font-size: clamp(17px,2.2vw,23px);
       font-weight: 800; line-height: 1.2; margin-bottom: 8px; letter-spacing: -.02em;
     }
     .metric-lbl { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
-    /* ─── Cases ────────────────────────────────────────────────────────── */
+    /* ─── Cases ──────────────────────────────────────────────────────── */
     .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .case-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: clamp(16px, 3vw, 24px);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: clamp(16px,3vw,24px);
     }
     .case-card h3 { margin-bottom: 12px; }
     .case-card ul { padding-left: 18px; color: var(--muted); font-size: 14px; line-height: 1.8; }
-
     .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
     .ba {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 14px;
     }
     .ba-label { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
     .ba p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
     .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
     .chip {
       font-size: 12px; font-weight: 700; color: var(--muted);
       border: 1px solid var(--border); background: var(--surface2);
-      padding: 6px 10px; border-radius: 999px;
+      padding: 6px 11px; border-radius: 999px;
     }
 
-    /* ─── FAQ ──────────────────────────────────────────────────────────── */
-    .faq-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+    /* ─── FAQ ────────────────────────────────────────────────────────── */
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     details {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
       transition: background .18s;
     }
     details[open] { background: var(--surface2); }
     summary {
-      cursor: pointer;
-      list-style: none;
-      padding: 16px 18px;
+      cursor: pointer; list-style: none;
+      padding: 17px 18px;
       font-size: 15px; font-weight: 600; color: var(--text);
       display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      user-select: none;
+      user-select: none; -webkit-tap-highlight-color: transparent;
     }
     summary::-webkit-details-marker { display: none; }
     summary::after {
-      content: '+';
-      font-size: 20px; font-weight: 300; color: var(--accent);
-      flex-shrink: 0; transition: transform .2s;
+      content: '+'; font-size: 22px; font-weight: 300;
+      color: var(--accent); flex-shrink: 0; transition: transform .2s;
     }
     details[open] summary::after { transform: rotate(45deg); }
-    .faq-body {
-      padding: 0 18px 16px;
-      font-size: 14px; color: var(--muted); line-height: 1.7;
-    }
+    .faq-body { padding: 0 18px 17px; font-size: 14px; color: var(--muted); line-height: 1.75; }
 
-    /* ─── Contact ──────────────────────────────────────────────────────── */
+    /* ─── Contact ────────────────────────────────────────────────────── */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
     .contact-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: clamp(18px, 4vw, 28px);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: clamp(18px,4vw,28px);
     }
     .contact-card h3 { margin-bottom: 8px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-    label { display: block; font-size: 12px; font-weight: 700; color: var(--muted2); margin-bottom: 6px; letter-spacing: .05em; }
+    label {
+      display: block; font-size: 12px; font-weight: 700;
+      color: var(--muted2); margin-bottom: 6px; letter-spacing: .05em;
+    }
     input, textarea {
-      width: 100%;
-      padding: 11px 13px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
+      width: 100%; padding: 12px 14px;
+      border-radius: 12px; border: 1px solid var(--border);
       background: rgba(255,255,255,.04);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      outline: none;
+      color: var(--text); font-family: 'DM Sans', sans-serif;
+      font-size: 15px; outline: none;
       transition: border-color .18s, box-shadow .18s;
     }
     textarea { min-height: 110px; resize: vertical; }
@@ -414,78 +380,125 @@
 
     .contact-info { display: flex; flex-direction: column; gap: 12px; }
     .info-row {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 16px;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 15px 16px;
       display: flex; align-items: center; gap: 13px;
     }
-    .info-icon { font-size: 20px; flex-shrink: 0; }
-    .info-label { font-size: 11px; font-weight: 700; color: var(--muted2); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 3px; }
-    .info-val { font-size: 14px; font-weight: 600; }
+    .info-icon { font-size: 22px; flex-shrink: 0; }
+    .info-label {
+      font-size: 11px; font-weight: 700; color: var(--muted2);
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 3px;
+    }
+    .info-val { font-size: 15px; font-weight: 600; }
     .info-val a:hover { color: var(--accent); }
 
-    /* ─── Footer ───────────────────────────────────────────────────────── */
-    .foot {
-      border-top: 1px solid var(--border);
-      padding: 20px 0 32px;
-    }
+    /* ─── Footer ─────────────────────────────────────────────────────── */
+    .foot { border-top: 1px solid var(--border); padding: 22px 0 36px; }
     .foot-row {
       display: flex; justify-content: space-between; align-items: center;
       gap: 14px; flex-wrap: wrap;
       font-size: 13px; color: var(--muted2);
     }
 
-    /* ─── Reveal animations ────────────────────────────────────────────── */
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    /* ─── Reveal animations ──────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
     .reveal.on { opacity: 1; transform: none; }
 
-    /* ─── Responsive ───────────────────────────────────────────────────── */
+    /* ═══════════════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════════════ */
 
-    /* Tablet: ≤ 900px */
-    @media (max-width: 900px) {
+    /* Tablet: ≤ 860px */
+    @media (max-width: 860px) {
       .nav-links { display: none; }
-      .burger { display: block; }
+      .burger    { display: block; }
+      /* Hide the inline CTA in nav on mobile, use menu instead */
+      .nav-cta   { display: none; }
 
-      .hero-grid { grid-template-columns: 1fr; }
+      .hero-grid    { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr 1fr; }
-      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid   { grid-template-columns: 1fr 1fr; }
       .metrics-grid { grid-template-columns: 1fr 1fr; }
       .sectors-grid { grid-template-columns: 1fr 1fr; }
-      .cases-grid { grid-template-columns: 1fr; }
-      .faq-grid { grid-template-columns: 1fr; }
+      .cases-grid   { grid-template-columns: 1fr; }
+      .faq-grid     { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
+      .ba-grid      { grid-template-columns: 1fr 1fr; }
     }
 
-    /* Mobile: ≤ 520px */
-    @media (max-width: 520px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .steps-grid { grid-template-columns: 1fr; }
-      .metrics-grid { grid-template-columns: 1fr 1fr; }
-      .sectors-grid { grid-template-columns: 1fr 1fr; }
+    /* Mobile: ≤ 540px — single column everything, bigger text */
+    @media (max-width: 540px) {
+      :root { --pad: 16px; }
+
+      /* Nav */
+      .brand-sub { display: none; } /* save space in header */
+
+      /* Hero */
+      .hero-card { padding: 20px; }
+      .hero-lead { font-size: 15px; }
+      .pill      { font-size: 13px; padding: 8px 13px; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
+
+      /* Stat row stays 2-col */
       .stat-row { grid-template-columns: 1fr 1fr; }
-      .ba-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
+      .stat-n   { font-size: 34px; }
+
+      /* All grids → 1 col */
+      .services-grid { grid-template-columns: 1fr; }
+      .steps-grid    { grid-template-columns: 1fr; }
+      .sectors-grid  { grid-template-columns: 1fr 1fr; }
+      .metrics-grid  { grid-template-columns: 1fr 1fr; }
+      .ba-grid       { grid-template-columns: 1fr; }
+
+      /* Steps: left-align instead of center on small screens */
+      .step { text-align: left; }
+      .step-num { margin: 0 0 12px; }
+
+      /* Forms */
+      .form-row  { grid-template-columns: 1fr; }
+      .form-actions { flex-direction: column; }
+      .form-actions .btn { width: 100%; justify-content: center; }
+
+      /* Scope card */
       .scope-card { flex-direction: column; }
+      .scope-card > div:last-child { width: 100%; }
+      .scope-card .btn { width: 100%; justify-content: center; }
+
+      /* Metrics */
+      .metric-big { font-size: 18px; }
+
+      /* FAQ summary bigger tap target */
+      summary { padding: 16px 14px; font-size: 15px; }
+      .faq-body { font-size: 14px; padding: 0 14px 16px; }
+
+      /* Section padding */
+      section { padding: 36px 0; }
+
+      /* Footer */
+      .foot-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .foot-row > div { width: 100%; display: flex; gap: 10px; }
+      .foot-row .btn { flex: 1; justify-content: center; }
     }
 
     /* Very small: ≤ 360px */
     @media (max-width: 360px) {
-      .metrics-grid { grid-template-columns: 1fr; }
-      .sectors-grid { grid-template-columns: 1fr; }
+      .sectors-grid  { grid-template-columns: 1fr; }
+      .metrics-grid  { grid-template-columns: 1fr; }
+      .stat-row      { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
 
-<!-- ─── HEADER ─────────────────────────────────────────────────────────── -->
+<!-- ─── HEADER ────────────────────────────────────────────────────────── -->
 <header class="header">
   <div class="wrap">
     <nav class="nav">
       <a class="brand" href="#top" aria-label="OPEXIA CONSULTING">
         <div class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 24 24" fill="none">
             <path d="M4 16l4-4 3 3 5-7 4 3" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
@@ -505,31 +518,37 @@
       </ul>
 
       <div style="display:flex; gap:10px; align-items:center;">
-        <a class="btn primary" href="#contacto">Hablemos →</a>
+        <a class="btn primary nav-cta" href="#contacto">Hablemos →</a>
         <button class="burger" id="burger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">☰</button>
       </div>
     </nav>
 
-    <div class="mobile-menu" id="mobileMenu" role="navigation">
-      <a href="#servicios">Servicios</a>
-      <a href="#metodo">Método</a>
-      <a href="#sectores">Sectores</a>
-      <a href="#resultados">Resultados</a>
-      <a href="#casos">Caso</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contacto">Contacto</a>
+    <!-- Mobile menu: hidden until burger clicked -->
+    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menú móvil">
+      <div class="mobile-menu-inner">
+        <a href="#servicios">Servicios</a>
+        <a href="#metodo">Método</a>
+        <a href="#sectores">Sectores</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#casos">Caso</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+        <div class="mobile-cta">
+          <a class="btn primary full" href="#contacto">Hablemos →</a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
+  <!-- ─── HERO ─────────────────────────────────────────────────────────── -->
   <section>
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-card">
-          <div class="kicker">CONSULTORÍA DE EXCELENCIA OPERACIONAL</div>
+          <span class="kicker">Consultoría de Excelencia Operacional</span>
           <h1>Mejora continua + automatización con <span class="grad">resultados medibles</span></h1>
           <p class="hero-lead">
             Transformamos procesos (industria y oficina) combinando <strong>Lean</strong>, <strong>Agile</strong>, gestión y datos. Menos fricción, más flujo, decisiones con KPIs.
@@ -538,7 +557,7 @@
             <span class="pill"><span class="dot"></span>Lean | Agile</span>
             <span class="pill"><span class="dot"></span>Formación adaptada</span>
             <span class="pill"><span class="dot"></span>Cuadros de mando</span>
-            <span class="pill"><span class="dot"></span>Liderazgo • Conflictos • Cambio cultural</span>
+            <span class="pill"><span class="dot"></span>Liderazgo & Cambio cultural</span>
             <span class="pill"><span class="dot"></span>Proyectos a nivel nacional</span>
           </div>
           <div class="hero-ctas">
@@ -588,15 +607,14 @@
     </div>
   </section>
 
-  <!-- ─── SERVICIOS ────────────────────────────────────────────────────── -->
+  <!-- ─── SERVICIOS ──────────────────────────────────────────────────── -->
   <section id="servicios">
     <div class="wrap">
       <div class="section-head">
-        <div class="kicker">Qué hacemos</div>
+        <span class="kicker">Qué hacemos</span>
         <h2>Servicios orientados a <span class="grad">eficiencia</span> y <span class="grad">control</span></h2>
         <p class="desc">Proyectos cerrados (objetivo + entregables) o acompañamiento mensual. Siempre con baseline, KPIs y plan de acción.</p>
       </div>
-
       <div class="services-grid">
         <div class="svc-card reveal">
           <div class="svc-tag">⚙️ Lean</div>
@@ -629,7 +647,6 @@
           <p>Adopción, comunicación, roles, rutinas, auditorías ligeras y acompañamiento para que el sistema no se degrade.</p>
         </div>
       </div>
-
       <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
         <a class="btn primary" href="#contacto">Pedir propuesta</a>
         <a class="btn" href="#metodo">Ver método →</a>
@@ -637,15 +654,14 @@
     </div>
   </section>
 
-  <!-- ─── MÉTODO ──────────────────────────────────────────────────────── -->
+  <!-- ─── MÉTODO ────────────────────────────────────────────────────── -->
   <section id="metodo">
     <div class="wrap">
       <div class="section-head">
-        <div class="kicker">Cómo trabajamos</div>
+        <span class="kicker">Cómo trabajamos</span>
         <h2>Un método simple: <span class="grad">diagnosticar</span>, ejecutar y <span class="grad">sostener</span></h2>
         <p class="desc">Sin humo: cada fase genera entregables y se valida con métricas.</p>
       </div>
-
       <div class="steps-grid">
         <div class="step reveal">
           <div class="step-num"><span class="grad">1</span></div>
@@ -671,22 +687,20 @@
     </div>
   </section>
 
-  <!-- ─── SECTORES ────────────────────────────────────────────────────── -->
+  <!-- ─── SECTORES ──────────────────────────────────────────────────── -->
   <section id="sectores">
     <div class="wrap">
       <div class="section-head">
-        <div class="kicker">Dónde aportamos</div>
+        <span class="kicker">Dónde aportamos</span>
         <h2>Sectores objetivo</h2>
-        <p class="desc">Trabajamos en <strong>toda España</strong>. Lo importante es el proceso, los datos y la ejecución.</p>
+        <p class="desc">Trabajamos a nivel nacional. Lo importante es el proceso, los datos y la ejecución.</p>
       </div>
-
       <div class="sectors-grid">
         <div class="sector reveal"><span class="sector-icon">🏭</span>Industria (fabricación)</div>
         <div class="sector reveal"><span class="sector-icon">📦</span>Logística & supply chain</div>
         <div class="sector reveal"><span class="sector-icon">🍽️</span>Alimentación & procesos</div>
         <div class="sector reveal"><span class="sector-icon">🧾</span>Servicios & backoffice</div>
       </div>
-
       <div class="scope-card reveal">
         <div>
           <h3>Trabajamos a nivel nacional · Presencial / remoto / híbrido</h3>
@@ -700,15 +714,14 @@
     </div>
   </section>
 
-  <!-- ─── RESULTADOS ──────────────────────────────────────────────────── -->
+  <!-- ─── RESULTADOS ────────────────────────────────────────────────── -->
   <section id="resultados">
     <div class="wrap">
       <div class="section-head">
-        <div class="kicker">Impacto</div>
+        <span class="kicker">Impacto</span>
         <h2>Resultados típicos <span class="grad">(según punto de partida)</span></h2>
         <p class="desc">Objetivos fijados con baseline y revisados en cadencia. Rangos habituales cuando hay disciplina de implantación.</p>
       </div>
-
       <div class="metrics-grid">
         <div class="metric reveal">
           <div class="metric-big"><span class="grad">-15% a -35%</span></div>
@@ -727,7 +740,6 @@
           <div class="metric-lbl">Visibilidad y control con KPIs y gestión visual</div>
         </div>
       </div>
-
       <div class="scope-card reveal" style="margin-top:16px;">
         <div>
           <h3>Qué te llevas en un proyecto OPEXIA</h3>
@@ -741,15 +753,14 @@
     </div>
   </section>
 
-  <!-- ─── CASO ────────────────────────────────────────────────────────── -->
+  <!-- ─── CASO ──────────────────────────────────────────────────────── -->
   <section id="casos">
     <div class="wrap">
       <div class="section-head">
-        <div class="kicker">Mini caso</div>
+        <span class="kicker">Mini caso</span>
         <h2>Antes / Después <span class="grad">(ejemplo típico)</span></h2>
         <p class="desc">Ejemplo representativo sin detalles sensibles. En tu propuesta lo aterrizamos con tu baseline real.</p>
       </div>
-
       <div class="cases-grid">
         <div class="case-card reveal">
           <h3>🧾 Proceso administrativo (reporting mensual)</h3>
@@ -775,7 +786,6 @@
             <span class="chip">Sostenibilidad</span>
           </div>
         </div>
-
         <div class="case-card reveal">
           <h3>🎯 Qué hacemos para conseguirlo</h3>
           <ul>
@@ -795,41 +805,35 @@
     </div>
   </section>
 
-  <!-- ─── FAQ ──────────────────────────────────────────────────────────── -->
+  <!-- ─── FAQ ──────────────────────────────────────────────────────── -->
   <section id="faq">
     <div class="wrap">
       <div class="section-head">
-        <div class="kicker">Dudas típicas</div>
+        <span class="kicker">Dudas típicas</span>
         <h2>FAQ</h2>
         <p class="desc">Si quieres, preparamos una propuesta en 1 página con alcance, hitos y métricas objetivo.</p>
       </div>
-
       <div class="faq-grid">
         <details class="reveal">
           <summary>¿Trabajáis por horas o por proyecto?</summary>
           <div class="faq-body">Preferentemente por <strong>proyecto con objetivos</strong> (alcance + entregables + KPIs). También ofrecemos acompañamiento mensual para sostener la mejora.</div>
         </details>
-
         <details class="reveal">
           <summary>¿Cómo garantizáis que el cambio se mantenga?</summary>
           <div class="faq-body">Con <strong>estándar + rutinas + formación + seguimiento</strong>. Si no existe cadencia y roles claros, el sistema se degrada: por eso cerramos el proyecto con sostenibilidad.</div>
         </details>
-
         <details class="reveal">
           <summary>¿Excel o Power BI?</summary>
           <div class="faq-body">Depende del contexto. Con Excel se puede ir muy lejos si hay modelo y calidad de datos. Power BI suma para distribución, permisos, escalabilidad y consumo por rol.</div>
         </details>
-
         <details class="reveal">
           <summary>¿Qué necesitáis del equipo?</summary>
           <div class="faq-body">Un sponsor, acceso a proceso/datos y 2–5 personas clave para talleres. La mejora no es "outsourcing": nosotros aceleramos y estructuramos, el equipo lo hace suyo.</div>
         </details>
-
         <details class="reveal">
           <summary>¿En cuánto tiempo se ven resultados?</summary>
           <div class="faq-body">Quick wins en semanas si hay foco. Cambios estructurales (modelo de gestión) suelen requerir 8–16 semanas para estabilizarse.</div>
         </details>
-
         <details class="reveal">
           <summary>¿Trabajáis en toda España?</summary>
           <div class="faq-body">Sí. Presencial, remoto o híbrido. Ajustamos la modalidad al tipo de trabajo (gemba vs analítica/dashboards).</div>
@@ -838,20 +842,18 @@
     </div>
   </section>
 
-  <!-- ─── CONTACTO ─────────────────────────────────────────────────────── -->
+  <!-- ─── CONTACTO ─────────────────────────────────────────────────── -->
   <section id="contacto">
     <div class="wrap">
       <div class="section-head">
-        <div class="kicker">Contacto</div>
+        <span class="kicker">Contacto</span>
         <h2>Cuéntanos tu reto y te proponemos <span class="grad">un plan</span></h2>
         <p class="desc">Objetivo, proceso, datos disponibles y plazo. Te devolvemos un enfoque con métricas y entregables.</p>
       </div>
-
       <div class="contact-grid">
         <div class="contact-card reveal">
           <h3>Escríbenos</h3>
           <p style="font-size:14px; color:var(--muted); margin:8px 0 18px;">Completa el formulario y se abrirá tu correo con el mensaje preparado.</p>
-
           <form id="contactForm">
             <div class="form-row">
               <div>
@@ -892,7 +894,7 @@
               <div class="info-icon">✉️</div>
               <div>
                 <div class="info-label">Email</div>
-                <div class="info-val"><a href="/cdn-cgi/l/email-protection#c1a8afa7ae81aeb1a4b9a8a0a2aeafb2b4adb5a8afa6efa2aeac"><span class="__cf_email__" data-cfemail="6900070f062906190c1100080a06071a1c051d00070e470a0604">[email&#160;protected]</span></a></div>
+                <div class="info-val"><a href="mailto:info@opexiaconsulting.com">info@opexiaconsulting.com</a></div>
               </div>
             </div>
             <div class="info-row">
@@ -910,7 +912,7 @@
               </div>
             </div>
             <div style="background:var(--surface2); border:1px solid var(--border); border-radius:var(--radius); padding:16px; margin-top:4px;">
-              <div class="kicker">Para ir al grano</div>
+              <span class="kicker">Para ir al grano</span>
               <p style="font-size:14px; color:var(--muted); margin-top:8px; line-height:1.6;">
                 Si quieres una propuesta rápida: <strong>1 proceso</strong>, <strong>1 KPI</strong>, <strong>1 palanca</strong> (Lean/Agile/datos). Lo escalamos después.
               </p>
@@ -935,36 +937,49 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Mobile menu toggle
-  const burger = document.getElementById('burger');
+  // ── Mobile menu ──────────────────────────────────────────────────────
+  const burger     = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobileMenu');
+
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    burger.setAttribute('aria-expanded', 'true');
+    burger.textContent = '✕';
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.textContent = '☰';
+  }
+
   burger.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    burger.setAttribute('aria-expanded', isOpen);
-    burger.textContent = isOpen ? '✕' : '☰';
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      burger.setAttribute('aria-expanded', false);
-      burger.textContent = '☰';
-    });
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
   });
 
-  // Reveal on scroll
-  const observer = new IntersectionObserver((entries) => {
+  // Close when any link is tapped
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Close on outside tap
+  document.addEventListener('click', e => {
+    if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) closeMenu();
+  });
+
+  // ── Reveal on scroll ─────────────────────────────────────────────────
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
-  }, { threshold: 0.08 });
+  }, { threshold: 0.06 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Contact form
+  // ── Contact form ─────────────────────────────────────────────────────
   const CONFIG = { emailTo: 'info@opexiaconsulting.com', emailSubject: 'Consulta — OPEXIA CONSULTING' };
-  const form = document.getElementById('contactForm');
-  const hint = document.getElementById('formHint');
+  const form   = document.getElementById('contactForm');
+  const hint   = document.getElementById('formHint');
 
   function buildMsg() {
     return [
@@ -972,8 +987,7 @@
       `Empresa/Área: ${document.getElementById('company').value.trim() || '-'}`,
       `Email: ${document.getElementById('email').value.trim()}`,
       `Teléfono: ${document.getElementById('phone').value.trim() || '-'}`,
-      '',
-      'Mensaje:',
+      '', 'Mensaje:',
       document.getElementById('message').value.trim()
     ].join('\n');
   }
@@ -983,7 +997,7 @@
     const email = document.getElementById('email').value.trim();
     if (!email.includes('@')) { hint.textContent = 'Revisa el email antes de enviar.'; return; }
     window.location.href = `mailto:${encodeURIComponent(CONFIG.emailTo)}?subject=${encodeURIComponent(CONFIG.emailSubject)}&body=${encodeURIComponent(buildMsg())}`;
-    hint.textContent = 'Si no se abre tu cliente de correo, usa "Copiar mensaje" y pégalo en tu email.';
+    hint.textContent = 'Si no se abre tu correo, usa "Copiar mensaje" y pégalo manualmente.';
   });
 
   document.getElementById('copyBtn').addEventListener('click', async () => {
@@ -1000,4 +1014,12 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name"
+  "name": "OPEXIA CONSULTING",
+  "description": "Mejora continua + automatización con resultados medibles. Lean, Agile, gestión, cuadros de mando y formación aplicada.",
+  "areaServed": "ES",
+  "email": "info@opexiaconsulting.com"
+}
+</script>
+
+</body>
+</html>
